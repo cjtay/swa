@@ -5,11 +5,11 @@ import Navbar from "./navbar";
 
 const Layout = ({ children }) => {
   return (
-    <>
+    <div className="layout-wrapper">
       <Navbar />
       {children}
       <Footer />
-    </>
+    </div>
   );
 };
 

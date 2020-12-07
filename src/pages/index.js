@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, graphql } from "gatsby";
+import { graphql } from "gatsby";
 
 import Layout from "../components/layout";
 // import SEO from "../components/seo"
@@ -16,7 +16,6 @@ const Index = ({ data }) => {
       <div className="container container-center">
         <h1>SWA Web Design Project</h1>
         <Events events={events} title="Higlights" />
-        <Link to="/page-2/">Go to page 2</Link> <br />
       </div>
     </Layout>
   );
@@ -26,9 +25,12 @@ export default Index;
 
 export const query = graphql`
   {
-    allStrapiEvent(filter: { featured: { eq: true } }) {
+    allStrapiEvent(
+      filter: { featured: { eq: true } }
+      limit: 3
+      sort: { fields: updated_at, order: DESC }
+    ) {
       nodes {
-        description
         featured
         id
         intro

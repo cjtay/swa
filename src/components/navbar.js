@@ -1,27 +1,27 @@
 import React from "react";
-import { useStaticQuery, graphql } from "gatsby";
-import PageLinks from "../contants/links";
-import { FaAlignRight } from "react-icons/fa";
+import { Link, useStaticQuery, graphql } from "gatsby";
+import PageLinks from "../constants/links";
+// import { FaAlignRight } from "react-icons/fa";
 import Image from "gatsby-image";
 
 const Navbar = ({ toggleSidebar }) => {
   const data = useStaticQuery(getNavData);
-  console.log("file: ", data.file.childImageSharp.fluid);
 
   return (
-    <nav className="navbar">
-      <div className="nav-center">
-        <div className="nav-header">
-          <div className="logo-img">
-            <Image fluid={data.file.childImageSharp.fluid} alt="swa logo" />
-          </div>
-
-          <button type="button" className="toggle-btn">
-            <FaAlignRight />
-          </button>
+    <nav>
+      <header>
+        <div className="logo">
+          <Image fluid={data.file.childImageSharp.fluid} alt="swa logo" />
         </div>
-        <PageLinks styleClass="nav-links"></PageLinks>
-      </div>
+        <h4>Singapore Women's Association</h4>
+        <nav>
+          <PageLinks styleClass="nav-links"></PageLinks>
+        </nav>
+
+        <Link to="/participate/donate">
+          <button>Donate</button>
+        </Link>
+      </header>
     </nav>
   );
 };
@@ -31,10 +31,11 @@ export default Navbar;
 export const getNavData = graphql`
   {
     file(
-      sourceInstanceName: { eq: "images" }
-      publicURL: {}
+      sourceInstanceName: { eq: "assets" }
       relativePath: { eq: "logo.png" }
     ) {
+      sourceInstanceName
+      relativePath
       childImageSharp {
         fluid {
           ...GatsbyImageSharpFluid

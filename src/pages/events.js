@@ -1,14 +1,15 @@
-import React from "react"
-import { graphql } from "gatsby"
+import React from "react";
+import { graphql } from "gatsby";
 
-import Layout from "../components/layout"
-import Events from "../components/events"
+import Layout from "../components/layout";
+import Events from "../components/events";
 
 const EventsPage = ({ data }) => {
   const {
     allStrapiEvent: { nodes: events },
-  } = data
-  console.log("events page", events) //destructuring out the data and rename 'nodes' to 'events' just to make it clearer
+  } = data;
+  //'nodes: events' - destructuring out the data and rename 'nodes' to 'events' just to make it clearer
+  // console.log("events page", events);
 
   return (
     <Layout>
@@ -16,16 +17,15 @@ const EventsPage = ({ data }) => {
         <Events events={events} title="All Events" />
       </div>
     </Layout>
-  )
-}
+  );
+};
 
-export default EventsPage
+export default EventsPage;
 
 export const query = graphql`
   {
-    allStrapiEvent {
+    allStrapiEvent(sort: { fields: published_at, order: DESC }) {
       nodes {
-        description
         featured
         id
         intro
@@ -41,4 +41,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;
