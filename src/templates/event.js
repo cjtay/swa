@@ -1,4 +1,5 @@
 import React from "react";
+import ReactMarkdown from "react-markdown";
 import Layout from "../components/layout";
 import Image from "gatsby-image";
 
@@ -7,15 +8,19 @@ const EventPage = ({ data }) => {
   console.log(event);
   return (
     <Layout>
-      <h1>{event.title}</h1>
-      <p>{event.description}</p>
-      <p>{event.published_at}</p>
-      {event.mainPhoto && (
-        <Image
-          fluid={event.mainPhoto.childImageSharp.fluid}
-          alt={event.title}
-        />
-      )}
+      <div className="container container-center">
+        <h1>{event.title}</h1>
+        {event.mainPhoto && (
+          <Image
+            fluid={event.mainPhoto.childImageSharp.fluid}
+            alt={event.title}
+            className="main-photo"
+          />
+        )}
+        <div className="event-description">
+          <ReactMarkdown source={event.description} />
+        </div>
+      </div>
     </Layout>
   );
 };

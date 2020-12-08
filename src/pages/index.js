@@ -4,7 +4,6 @@ import { graphql } from "gatsby";
 import Layout from "../components/layout";
 // import SEO from "../components/seo"
 import Events from "../components/events";
-import { parsePath } from 'gatsby-link';
 
 const Index = ({ data }) => {
   const {
@@ -17,10 +16,7 @@ const Index = ({ data }) => {
       <div className="container container-center">
         <h1>SWA Web Design Project</h1>
         <Events events={events} title="Higlights" />
-        <p>this was updated from macbook</p>
       </div>
-      
-      
     </Layout>
   );
 };
@@ -40,6 +36,11 @@ export const query = graphql`
         intro
         slug
         title
+        programme
+        published_at(formatString: "Do MMM YYYY ")
+        author {
+          username
+        }
         mainPhoto {
           childImageSharp {
             fluid {
@@ -51,4 +52,3 @@ export const query = graphql`
     }
   }
 `;
-

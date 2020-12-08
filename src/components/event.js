@@ -15,15 +15,11 @@ const Event = ({ event }) => {
       <div className="event-info-container">
         <h2>{event.title}</h2>
         <p>{event.intro}</p>
+        {/* <div className="event-programme">{event.programme}</div> */}
+        <span>{event.programme}</span>
         <div className="event-footer">
-          {/* <div className="event-author-photo">
-                  <Image
-                    fluid={event.author.photo.childImageSharp.fluid}
-                    alt={event.author.username}
-                  />
-                </div>
-                <p>{event.author.username}</p>
-                <p>{event.published_at}</p> */}
+          <p>{event.author.username}</p>
+          <p>{event.published_at}</p>
         </div>
       </div>
     </li>

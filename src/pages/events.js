@@ -31,6 +31,11 @@ export const query = graphql`
         intro
         slug
         title
+        programme
+        published_at(formatString: "Do MMM YYYY ")
+        author {
+          username
+        }
         mainPhoto {
           childImageSharp {
             fluid {

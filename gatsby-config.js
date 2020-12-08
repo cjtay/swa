@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `env.${process.env.NODE_ENV}`,
+});
+
 module.exports = {
   siteMetadata: {
     title: `Singapore Women's Association`,
@@ -52,12 +56,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
-        fonts: [`Roboto\:400,700`],
+        fonts: [`Roboto\:300,400,700`],
         display: "swap",
       },
     },
+
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
   ],
-}
+};
